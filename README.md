@@ -4,16 +4,16 @@
 
 ### Установка (руками)
 
-1) Компилируем на машине со сфинксом (sphinxudf.h должен лежать рядом с исходником udf)
+1) Компилируем на машине со сфинксом
 
 ```
-storage> gcc -fPIC -shared -o ./random_float.so ./random_float.c
+make
 ```
 
-2) Кладем '.so'-файл в папку, указанную в качестве plugin_dir в конфиге searchd
+2) Кладем '.so'-файлы в папку, указанную в качестве plugin_dir в конфиге searchd (по умолчанию /usr/lib/sphinx-2.2/lib/)
 
 ```
-storage> cp ./random_float.so /home/index/sphinx/slave/plugins
+make install
 ```
 
 Рестартуем searchd.
