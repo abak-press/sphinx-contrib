@@ -1,7 +1,8 @@
 include Makefile.inc
 
 SUBDIRS = \
-	  	random_float
+	  	random_float \
+		uniqueserial
 
 .PHONY: all clean install uninstall
 
