@@ -1,7 +1,8 @@
 include ../Makefile.inc
 
+SPH_UDF_VERSION ?= 8
 PLUGIN_NAME = uniqueserial
-CFLAGS = -fPIC -shared -Wall -std=c++11
+CFLAGS = -fPIC -shared -Wall -std=c++11 -D'SPH_UDF_VERSION=$(SPH_UDF_VERSION)'
 CC ?= gcc
 
 .PHONY: all install
