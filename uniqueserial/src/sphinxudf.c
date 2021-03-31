@@ -1,8 +1,5 @@
 //
-// $Id$
-//
-
-//
+// Copyright (c) 2017-2020, Manticore Software LTD (http://manticoresearch.com)
 // Copyright (c) 2011-2016, Andrew Aksyonoff
 // Copyright (c) 2011-2016, Sphinx Technologies Inc
 // All rights reserved
@@ -301,17 +298,22 @@ int sphinx_get_term_factor_int ( const unsigned int * in, enum sphinx_term_facto
 
 float sphinx_get_field_factor_float ( const unsigned int * in, enum sphinx_field_factor f )
 {
-	int r = sphinx_get_field_factor_int ( in, f );
-	return *(float*)&r;
+	union {
+		int r;
+		float f;
+	} aliaser;
+	aliaser.r = sphinx_get_field_factor_int ( in, f );
+	return aliaser.f;
 }
 
 
 float sphinx_get_term_factor_float ( const unsigned int * in, enum sphinx_term_factor f )
 {
-	int r = sphinx_get_term_factor_int ( in, f );
-	return *(float*)&r;
+	union
+	{
+		int r;
+		float f;
+	} aliaser;
+	aliaser.r = sphinx_get_term_factor_int ( in, f );
+	return aliaser.f;
 }
-
-//
-// $Id$
-//
